@@ -8,10 +8,15 @@ WORKDIR $HOME
 
 ######### Customize Container Here ###########
 
+# Sudo user
 RUN apt-get update \
     && apt-get install -y sudo \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && rm -rf /var/lib/apt/list/*
+
+# Install Anaconda3
+COPY resources/install_anaconda.sh /tmp/
+RUN bash /tmp/install_anaconda.sh
 
 ######### End Customizations ###########
 
