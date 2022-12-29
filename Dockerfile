@@ -1,4 +1,4 @@
-FROM kasmweb/core-ubuntu-focal:1.12.0-rolling
+FROM kasmweb/core-cuda-focal:1.12.0-rolling
 
 USER root
 
@@ -15,38 +15,38 @@ RUN apt-get update \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && rm -rf /var/lib/apt/list/*
 
-USER 1000
-# # install apt packages
-RUN sudo apt-get update
+# USER 1000
+# # # install apt packages
+# RUN sudo apt-get update
 
-# Install Anaconda3
-COPY resources/install_anaconda.sh /tmp/
-RUN bash /tmp/install_anaconda.sh
+# # Install Anaconda3
+# COPY resources/install_anaconda.sh /tmp/
+# RUN bash /tmp/install_anaconda.sh
 
 
-# # Install packages in conda environment
-# COPY resources/install_conda_packages.sh /tmp/
-# RUN bash /tmp/install_conda_packages.sh
+# # # Install packages in conda environment
+# # COPY resources/install_conda_packages.sh /tmp/
+# # RUN bash /tmp/install_conda_packages.sh
 
-# Install SDFstudio and Nerfstudio
-COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
-RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
+# # Install SDFstudio and Nerfstudio
+# COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
+# RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
 
-# # Install nvtop
-COPY resources/install_nvtop.sh /tmp/
-RUN bash /tmp/install_nvtop.sh
+# # # Install nvtop
+# COPY resources/install_nvtop.sh /tmp/
+# RUN bash /tmp/install_nvtop.sh
 
-# install VS code
-USER root
-COPY resources/install_vscode.sh /tmp/
-RUN bash /tmp/install_vscode.sh
+# # install VS code
+# USER root
+# COPY resources/install_vscode.sh /tmp/
+# RUN bash /tmp/install_vscode.sh
 
 # Install Chrome
 USER root
 COPY resources/install_chrome.sh /tmp/
 RUN bash /tmp/install_chrome.sh
 
-USER 1000
+# USER 1000
 
 ######### End Customizations ###########
 USER root
