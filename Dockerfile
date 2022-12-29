@@ -34,6 +34,12 @@ COPY resources/install_conda_packages.sh /tmp/
 RUN bash /tmp/install_conda_packages.sh
 USER root
 
+# Install SDFstudio and Nerfstudio
+USER 1000
+COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
+RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
+USER root
+
 # Install nvtop
 COPY resources/install_nvtop.sh /tmp/
 RUN bash /tmp/install_nvtop.sh
@@ -42,10 +48,6 @@ RUN bash /tmp/install_nvtop.sh
 #install VS code
 COPY resources/install_vscode.sh /tmp/
 RUN bash /tmp/install_vscode.sh
-
-# Install Chrome
-COPY resources/install_chrome.sh /tmp/
-RUN bash /tmp/install_chrome.sh
 
 ######### End Customizations ###########
 
