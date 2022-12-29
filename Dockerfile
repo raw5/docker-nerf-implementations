@@ -18,12 +18,11 @@ RUN apt-get update \
 RUN apt-get update && apt-get install -y \
     python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
     libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 \
-    libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping \
-    git remmina remmina-plugin-rdp
+    libxtst6 gdal-bin dnsutils iputils-ping
 
-# update pip and install python packages
-COPY resources/install_python_packages.sh /tmp/
-RUN bash /tmp/install_python_packages.sh
+# update pip
+COPY resources/update_pip.sh /tmp/
+RUN bash /tmp/update_pip.sh
 
 # Install Anaconda3
 COPY resources/install_anaconda.sh /tmp/
@@ -47,11 +46,6 @@ RUN bash /tmp/install_vscode.sh
 # Install Chrome
 COPY resources/install_chrome.sh /tmp/
 RUN bash /tmp/install_chrome.sh
-
-# Create desktop shortcuts
-RUN cp /usr/share/applications/org.remmina.Remmina.desktop $HOME/Desktop/ \
-    && chmod +x $HOME/Desktop/org.remmina.Remmina.desktop \
-    && chown 1000:1000 $HOME/Desktop/org.remmina.Remmina.desktop
 
 ######### End Customizations ###########
 
