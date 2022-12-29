@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/anaconda3/bin/activate
+source /home/kasm-default-profile/anaconda3/bin/activate
 conda activate
 
 ARCH=$(uname -p)

@@ -6,7 +6,7 @@ cd /tmp/
 wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-${ARCH}.sh
 bash Anaconda3-20*-Linux-${ARCH}.sh -b -p /home/kasm-default-profile/anaconda3
 rm -r /tmp/Anaconda3-20*-Linux-${ARCH}.sh 
-echo 'source /home/kasm-default-profile/anaconda3/bin/activate' >> /etc/bash.bashrc
+echo 'source /home/kasm-default-profile/anaconda3/bin/activate' >> ~/.bashrc
 # Update all the conad things
 source /home/kasm-default-profile/anaconda3/bin/activate
 conda update -n base -c defaults conda 
@@ -15,4 +15,3 @@ conda clean --all
 /home/kasm-default-profile/anaconda3/bin/conda config --set ssl_verify /etc/ssl/certs/ca-certificates.crt
 /home/kasm-default-profile/anaconda3/bin/conda install pip
 mkdir -p /home/kasm-user/.pip
-chown -R 1000:1000 /home/kasm-default-profile/.conda/
