@@ -1,4 +1,4 @@
-FROM kasmweb/core-ubuntu-focal:1.12.0
+FROM kasmweb/core-nvidia-focal:develop-rolling
 USER root
 
 ENV HOME /home/kasm-default-profile
@@ -14,9 +14,44 @@ RUN apt-get update \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && rm -rf /var/lib/apt/list/*
 
+# install apt packages
+RUN apt-get update && apt-get install -y \
+    python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
+    libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 \
+    libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping \
+    git remmina remmina-plugin-rdp
+
+# update pip and install python packages
+COPY resources/install_python_packages.sh /tmp/
+RUN bash /tmp/install_python_packages.sh
+
 # Install Anaconda3
 COPY resources/install_anaconda.sh /tmp/
 RUN bash /tmp/install_anaconda.sh
+
+# Install packages in conda environment
+USER 1000
+COPY resources/install_conda_packages.sh /tmp/
+RUN bash /tmp/install_conda_packages.sh
+USER root
+
+# Install nvtop
+COPY resources/install_nvtop.sh /tmp/
+RUN bash /tmp/install_nvtop.sh
+
+# Install Visual Studio Code
+#install VS code
+COPY resources/install_vscode.sh /tmp/
+RUN bash /tmp/install_vscode.sh
+
+# Install Chrome
+COPY resources/install_chrome.sh /tmp/
+RUN bash /tmp/install_chrome.sh
+
+# Create desktop shortcuts
+RUN cp /usr/share/applications/org.remmina.Remmina.desktop $HOME/Desktop/ \
+    && chmod +x $HOME/Desktop/org.remmina.Remmina.desktop \
+    && chown 1000:1000 $HOME/Desktop/org.remmina.Remmina.desktop
 
 ######### End Customizations ###########
 
