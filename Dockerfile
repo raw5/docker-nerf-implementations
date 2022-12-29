@@ -1,4 +1,3 @@
-FROM kasmweb/core-nvidia-focal:develop-rolling
 FROM kasmweb/core-ubuntu-focal:1.12.0-rolling
 
 USER root
@@ -16,8 +15,6 @@ RUN apt-get update \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && rm -rf /var/lib/apt/list/*
-
-USER 1000
 
 # # install apt packages
 # RUN sudo apt-get update
