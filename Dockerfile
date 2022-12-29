@@ -42,6 +42,7 @@ COPY resources/install_vscode.sh /tmp/
 RUN bash /tmp/install_vscode.sh
 
 # Install Chrome
+USER root
 COPY resources/install_chrome.sh /tmp/
 RUN bash /tmp/install_chrome.sh
 
