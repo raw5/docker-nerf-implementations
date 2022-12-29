@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install -y cmake libncurses5-dev libncursesw5-dev gcc
+sudo apt install -y cmake libncurses5-dev libncursesw5-dev gcc
 
 cd /tmp
 git clone https://github.com/Syllo/nvtop.git

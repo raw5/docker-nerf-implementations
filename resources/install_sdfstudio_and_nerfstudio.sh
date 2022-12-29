@@ -20,14 +20,12 @@ pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/to
 # Installing SDFStudio
 git clone https://github.com/autonomousvision/sdfstudio.git
 cd sdfstudio
-git clone https://github.com/autonomousvision/sdfstudio.git
-cd sdfstudio
 pip install --upgrade pip setuptools
 pip install -e .
 
 # Install Nerfstudio
 cd $HOME
-git clone git@github.com:nerfstudio-project/nerfstudio.git
+git clone https://github.com/nerfstudio-project/nerfstudio.git
 cd nerfstudio
 pip install --upgrade pip setuptools
 pip install -e .
