@@ -11,7 +11,7 @@ rm -r /tmp/Anaconda3-20*-Linux-${ARCH}.sh
 echo 'source /opt/anaconda3/bin/activate' >> /etc/bash.bashrc
 # Update all the conad things
 source /opt/anaconda3/bin/activate
-conda update -n root conda 
+conda update -n base -c defaults conda
 conda update --all
 conda clean --all
 /opt/anaconda3/bin/conda config --set ssl_verify /etc/ssl/certs/ca-certificates.crt

@@ -25,24 +25,23 @@ USER root
 COPY resources/install_anaconda.sh /tmp/
 RUN bash /tmp/install_anaconda.sh
 
-USER 1000
 # Install SDFstudio and Nerfstudio
-COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
-RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
+# COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
+# RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
 
 # # # Install nvtop
-# COPY resources/install_nvtop.sh /tmp/
-# RUN bash /tmp/install_nvtop.sh
+COPY resources/install_nvtop.sh /tmp/
+RUN bash /tmp/install_nvtop.sh
 
 # # install VS code
-# USER root
-# COPY resources/install_vscode.sh /tmp/
-# RUN bash /tmp/install_vscode.sh
+USER root
+COPY resources/install_vscode.sh /tmp/
+RUN bash /tmp/install_vscode.sh
 
 # Install Chrome
-# USER root
-# COPY resources/install_chrome.sh /tmp/
-# RUN bash /tmp/install_chrome.sh
+USER root
+COPY resources/install_chrome.sh /tmp/
+RUN bash /tmp/install_chrome.sh
 
 ######### End Customizations ###########
 USER root

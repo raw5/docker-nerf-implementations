@@ -42,13 +42,14 @@ pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/to
 
 
 # Installing Nerfsudio
- echo "------------- Installing Nerf Studio ----------------"
+echo "------------- Installing Nerf Studio ----------------"
 git clone https://github.com/nerfstudio-project/nerfstudio.git
 cd nerfstudio
 pip install --upgrade pip setuptools
 pip install -e .
 
 # install tab completion
+chown -R 1000:1000 /home/kasm-default-profile/.bashrc
 ns-install-cli
 conda deactivate
 
