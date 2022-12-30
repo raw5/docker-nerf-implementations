@@ -61,5 +61,5 @@ RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
 USER 1000
 
-ENTRYPOINT ["/dockerstartup/install_tinycuda.sh"]
-CMD ["--wait"]
+# ENTRYPOINT ["/dockerstartup/install_tinycuda.sh"]
+# CMD ["--wait"]
