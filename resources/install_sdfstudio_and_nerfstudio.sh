@@ -22,6 +22,7 @@ git clone https://github.com/autonomousvision/sdfstudio.git
 cd sdfstudio
 pip install --upgrade pip setuptools
 pip install -e .
+conda install -c conda-forge qt
 
 conda deactivate
 cd $USER_HOME
@@ -39,6 +40,7 @@ git clone https://github.com/nerfstudio-project/nerfstudio.git
 cd nerfstudio
 pip install --upgrade pip setuptools
 pip install -e .
+conda install -c conda-forge qt
 
 # install tab completion
 # ns-install-cli
