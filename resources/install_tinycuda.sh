@@ -6,7 +6,7 @@ conda activate
 
 cd $USER_HOME
 
-conda activate nerfstudio
+conda activate sdfstudio
 
 echo "------------- Installing Tiny Cuda ----------------"
 pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
