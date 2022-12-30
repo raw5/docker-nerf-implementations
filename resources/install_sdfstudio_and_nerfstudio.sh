@@ -5,10 +5,11 @@ source /opt/anaconda3/bin/activate
 conda activate
 
 cd $USER_HOME
+chown -R 1000:1000 /home/kasm-default-profile/.bashrc
 
 #Create environment
-conda create --name nerfstudio -y python=3.8
-conda activate nerfstudio
+conda create --name sdfstudio -y python=3.8
+conda activate sdfstudio
 
 # Install Dependencies
 pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
@@ -22,7 +23,12 @@ cd sdfstudio
 pip install --upgrade pip setuptools
 pip install -e .
 
+conda deactivate
 cd $USER_HOME
+
+#Create environment
+conda create --name nerfstudio -y python=3.8
+conda activate nerfstudio
 
 # Installing Nerfsudio
 echo "------------- Installing Nerf Studio ----------------"
@@ -31,9 +37,11 @@ cd nerfstudio
 pip install --upgrade pip setuptools
 pip install -e .
 
+# Install Dependencies
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+
 # install tab completion
-chown -R 1000:1000 /home/kasm-default-profile/.bashrc
-ns-install-cli
+# ns-install-cli
 conda deactivate
 
 cd $HOME
