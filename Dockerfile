@@ -32,8 +32,10 @@ COPY resources/install_anaconda.sh /tmp/
 RUN bash /tmp/install_anaconda.sh
 
 # Install SDFstudio and Nerfstudio
+USER 1000
 COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
 RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
+USER root
 
 # # # Install nvtop
 COPY resources/install_nvtop.sh /tmp/

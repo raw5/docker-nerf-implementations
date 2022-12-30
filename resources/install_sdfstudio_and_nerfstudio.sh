@@ -30,15 +30,15 @@ cd $USER_HOME
 conda create --name nerfstudio -y python=3.8
 conda activate nerfstudio
 
+# Install Dependencies
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+
 # Installing Nerfsudio
 echo "------------- Installing Nerf Studio ----------------"
 git clone https://github.com/nerfstudio-project/nerfstudio.git
 cd nerfstudio
 pip install --upgrade pip setuptools
 pip install -e .
-
-# Install Dependencies
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
 # install tab completion
 # ns-install-cli
