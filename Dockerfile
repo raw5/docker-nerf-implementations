@@ -17,15 +17,15 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/list/*
 
 # Install Dpendencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
         libappindicator1 fonts-liberation \
         libfontconfig1 build-essential mesa-common-dev libglu1-mesa-dev \
         dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable \
         python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
         libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 \
         lsb-release xdg-utils \
-        libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping \
-        git
+        libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping git \
+        && rm -rf /var/lib/apt/lists/*
 
 # Install Anaconda3
 COPY resources/install_anaconda.sh /tmp/
