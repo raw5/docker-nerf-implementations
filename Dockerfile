@@ -16,11 +16,16 @@ RUN apt-get update \
     && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && rm -rf /var/lib/apt/list/*
 
-USER 1000
-# install apt packages
-RUN sudo apt-get update
+# Install Dpendencies
+RUN apt-get update && apt-get install -y \
+        libappindicator1 fonts-liberation \
+        dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable \
+        python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
+        libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 \
+        lsb-release xdg-utils \
+        libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping \
+        git
 
-USER root
 # Install Anaconda3
 COPY resources/install_anaconda.sh /tmp/
 RUN bash /tmp/install_anaconda.sh
@@ -34,12 +39,10 @@ COPY resources/install_nvtop.sh /tmp/
 RUN bash /tmp/install_nvtop.sh
 
 # # install VS code
-USER root
 COPY resources/install_vscode.sh /tmp/
 RUN bash /tmp/install_vscode.sh
 
 # Install Chrome
-USER root
 COPY resources/install_chrome.sh /tmp/
 RUN bash /tmp/install_chrome.sh
 

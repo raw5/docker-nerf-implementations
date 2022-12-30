@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install -y cmake libdrm-dev libsystemd-dev libncurses5-dev libncursesw5-dev gcc
+apt install -y cmake libdrm-dev libsystemd-dev libncurses5-dev libncursesw5-dev gcc
 
 cd /tmp
 git clone https://github.com/Syllo/nvtop.git
