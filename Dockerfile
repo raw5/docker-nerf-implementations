@@ -31,8 +31,8 @@ COPY resources/install_anaconda.sh /tmp/
 RUN bash /tmp/install_anaconda.sh
 
 # Install SDFstudio and Nerfstudio
-# COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
-# RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
+COPY resources/install_sdfstudio_and_nerfstudio.sh /tmp/
+RUN bash /tmp/install_sdfstudio_and_nerfstudio.sh
 
 # # # Install nvtop
 COPY resources/install_nvtop.sh /tmp/
@@ -46,6 +46,9 @@ RUN bash /tmp/install_vscode.sh
 COPY resources/install_chrome.sh /tmp/
 RUN bash /tmp/install_chrome.sh
 
+# Tinycuda installation on entrypoint
+COPY resources/install_tinycuda.sh $STARTUPDIR
+
 ######### End Customizations ###########
 USER root
 RUN chown 1000:0 $HOME
@@ -56,3 +59,6 @@ WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
 USER 1000
+
+ENTRYPOINT ["/dockerstartup/install_tinycuda.sh"]
+CMD ["--wait"]
